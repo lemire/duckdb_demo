@@ -1,7 +1,7 @@
-# OLAP sur la base de données shunshine
+# OLAP sur la base de données shunshine avec DuckDB
 
 La base de données Sunshine de l’Ontario, officiellement appelée Public Sector Salary Disclosure (divulgation des salaires du secteur public), est une liste annuelle publiée par le gouvernement de l’Ontario, conformément à la Public Sector Salary Disclosure Act de 1996. Elle recense les employés du secteur public et des organisations financées par la province qui gagnent un salaire de 100 000 $ ou plus par an. Cette initiative vise à promouvoir la transparence et la responsabilité dans l’utilisation des fonds publics.
-Nous pouvons utiliser cette base de données pour tester des requêtes OLAP.
+Nous pouvons utiliser cette base de données pour tester des requêtes OLAP. Nous allons utiliser DuckDB.
 
 ## Prérequis
 
