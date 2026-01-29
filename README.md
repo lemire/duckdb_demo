@@ -81,6 +81,58 @@ Pour isoler l'environnement de développement et gérer les dépendances, il est
      deactivate
      ```
 
+## Environnement virtuel et installation des dépendances avec uv
+
+Pour une gestion plus rapide et moderne des environnements virtuels et des dépendances, vous pouvez utiliser `uv`, un outil alternatif à `venv` et `pip`. Voici les étapes :
+
+1. **Installation de uv** (si nécessaire) :
+   - Sur macOS et Linux :
+     ```bash
+     curl -LsSf https://astral.sh/uv/install.sh | sh
+     ```
+   - Sur Windows :
+     ```powershell
+     powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+     ```
+
+2. **Création de l'environnement virtuel** :
+   - Ouvrez un terminal et placez-vous dans le répertoire principal du projet.
+   - Exécutez la commande suivante pour créer un environnement virtuel nommé `.venv` :
+     ```bash
+     uv venv
+     ```
+
+3. **Activation de l'environnement virtuel** :
+   - Sur macOS et Linux :
+     ```bash
+     source .venv/bin/activate
+     ```
+   - Sur Windows :
+     ```bash
+     .venv\Scripts\activate
+     ```
+
+   Une fois activé, vous devriez voir le préfixe `(.venv)` dans votre terminal.
+
+4. **Installation des dépendances** :
+   - Assurez-vous que le fichier `requirements.txt` est présent dans le répertoire principal du projet.
+   - Installez les dépendances nécessaires en exécutant :
+     ```bash
+     uv pip install -r requirements.txt
+     ```
+
+5. **Vérification de l'installation** :
+   - Pour vérifier que toutes les dépendances sont correctement installées, exécutez :
+     ```bash
+     uv pip list
+     ```
+
+6. **Désactivation de l'environnement virtuel** :
+   - Une fois terminé, vous pouvez désactiver l'environnement virtuel en exécutant :
+     ```bash
+     deactivate
+     ```
+
 
 
 ## Obtention des fichiers du projet
