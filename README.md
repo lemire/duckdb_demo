@@ -3,6 +3,18 @@
 La base de données Sunshine de l’Ontario, officiellement appelée Public Sector Salary Disclosure (divulgation des salaires du secteur public), est une liste annuelle publiée par le gouvernement de l’Ontario, conformément à la Public Sector Salary Disclosure Act de 1996. Elle recense les employés du secteur public et des organisations financées par la province qui gagnent un salaire de 100 000 $ ou plus par an. Cette initiative vise à promouvoir la transparence et la responsabilité dans l’utilisation des fonds publics.
 Nous pouvons utiliser cette base de données pour tester des requêtes OLAP. Nous allons utiliser DuckDB.
 
+## DuckDB
+
+
+DuckDB est un système de gestion de base de données analytique en colonnes, embarqué, conçu pour les analyses de données rapides et efficaces. Contrairement aux bases de données traditionnelles comme SQLite, DuckDB est optimisé pour les requêtes OLAP (Online Analytical Processing), permettant des agrégations, des jointures et des analyses complexes sur de gros volumes de données sans nécessiter de serveur séparé.
+
+Dans ce projet, nous utilisons DuckDB pour :
+
+- Importer et traiter les données CSV des salaires publics de l'Ontario.
+- Exécuter des requêtes OLAP avancées telles que roll-up, drill-down, dice, slice, pivot et approximate count distinct.
+- Bénéficier de performances élevées grâce à son moteur en colonnes, idéal pour les analyses de données volumineuses.
+
+
 ## Prérequis
 
 Avant de procéder, assurez-vous d'installer Python 3.7 ou une version ultérieure sur votre machine.
@@ -41,7 +53,7 @@ Le nom de l'interpréteur Python sur votre système peut être `python` ou `pyth
 
 ## Environnement virtuel et installation des dépendances
 
-Pour isoler l'environnement de développement et gérer les dépendances, il est recommandé d'utiliser un environnement virtuel Python. Voici les étapes :
+Pour isoler l'environnement de développement et gérer les dépendances, il est recommandé d'utiliser un environnement virtuel Python is vous ne souhaitez pas utiliser uv. Voici les étapes :
 
 1. **Création de l'environnement virtuel** :
    - Ouvrez un terminal et placez-vous dans le répertoire principal du projet.
@@ -95,45 +107,21 @@ Pour une gestion plus rapide et moderne des environnements virtuels et des dépe
      powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
      ```
 
-2. **Création de l'environnement virtuel** :
-   - Ouvrez un terminal et placez-vous dans le répertoire principal du projet.
-   - Exécutez la commande suivante pour créer un environnement virtuel nommé `.venv` :
-     ```bash
-     uv venv
-     ```
-
-3. **Activation de l'environnement virtuel** :
-   - Sur macOS et Linux :
-     ```bash
-     source .venv/bin/activate
-     ```
-   - Sur Windows :
-     ```bash
-     .venv\Scripts\activate
-     ```
-
-   Une fois activé, vous devriez voir le préfixe `(.venv)` dans votre terminal.
-
-4. **Installation des dépendances** :
-   - Assurez-vous que le fichier `requirements.txt` est présent dans le répertoire principal du projet.
+2. **Installation des dépendances** :
+   - Assurez-vous que les fichiers `pyproject.toml` et `uv.lock` sont présents dans le répertoire principal du projet.
    - Installez les dépendances nécessaires en exécutant :
      ```bash
-     uv pip install -r requirements.txt
+     uv sync
      ```
 
-5. **Vérification de l'installation** :
+3. **Vérification de l'installation** :
    - Pour vérifier que toutes les dépendances sont correctement installées, exécutez :
      ```bash
      uv pip list
      ```
 
-6. **Désactivation de l'environnement virtuel** :
-   - Une fois terminé, vous pouvez désactiver l'environnement virtuel en exécutant :
-     ```bash
-     deactivate
-     ```
 
-
+Pour exécuter les scripts python, tapez `uv run monscript`.
 
 ## Obtention des fichiers du projet
 
@@ -157,6 +145,12 @@ ou
 
 ```bash
 python3 python/create.py  data/tbs-pssd-compendium-salary-disclosed-2024-en-utf-8-2025-03-26.csv database.bin
+```
+
+ou 
+
+```bash
+uv run python/create.py  data/tbs-pssd-compendium-salary-disclosed-2024-en-utf-8-2025-03-26.csv database.bin
 ```
 
 devrait créer une base de données "database.bin" normalisée.
@@ -219,6 +213,13 @@ ou
 ```bash
 python python/olap.py database.bin
 ```
+
+ou
+
+```bash
+uv run python/olap.py database.bin
+```
+
 
 ## Résultat attendu
 
