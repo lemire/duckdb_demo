@@ -507,3 +507,24 @@ SQLite, en revanche, est principalement conçu pour des bases de données transa
 
 
 
+## Activités d'approfondissement
+
+Pour approfondir votre compréhension des requêtes OLAP et de DuckDB, voici quelques activités proposées :
+
+1. **Modification des requêtes existantes** :
+   - Modifiez la requête roll-up pour inclure des filtres sur les années (par exemple, uniquement 2024).
+   - Changez la requête drill-down pour analyser un autre secteur, comme "Hospitals & Boards of Public Health".
+
+2. **Ajout de nouvelles requêtes OLAP** :
+   - Implémentez une requête slice pour un employeur spécifique dans un secteur donné.
+   - Créez une requête pivot pour comparer les salaires moyens entre plusieurs secteurs sur plusieurs années.
+
+3. **Analyse avancée des données** :
+   - Calculez le top 10 des employeurs avec les salaires moyens les plus élevés.
+   - Analysez la distribution des salaires par titre de poste contenant des mots-clés spécifiques (par exemple, "manager" ou "director").
+
+4. **Question sur les index** :
+   - Pourquoi les index sont-ils importants dans les bases de données ? Expliquez leur rôle dans l'optimisation des requêtes OLAP et donnez des exemples basés sur le schéma de la base de données de ce projet.
+   - Proposez l'ajout d'un nouvel index sur la table `salaries` pour la colonne `year` et expliquez comment cela pourrait améliorer les performances des requêtes roll-up et slice qui filtrent par année. La syntaxe est : `CREATE INDEX idx_salaries_year ON salaries(year);`
+
+Ces activités vous permettront d'explorer davantage les capacités de DuckDB et les concepts OLAP appliqués aux données réelles.
